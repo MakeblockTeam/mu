@@ -77,7 +77,6 @@ def setup_modes(editor, view):
         'adafruit': AdafruitMode(editor, view),
         'microbit': MicrobitMode(editor, view),
         'makeblock': MakeblockMode(editor, view),
-        'esp': ESPMode(editor, view),
         'debugger': DebugMode(editor, view),
     }
 

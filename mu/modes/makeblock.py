@@ -323,6 +323,7 @@ class MakeblockMode(MicroPythonMode):
     connected = True  #: is the Makeblock board connected.
     force_interrupt = False  #: NO keyboard interrupt on serial connection.
     valid_boards = [
+        (0x1A86, 0x7523),  # HL-340
     ]
     # Modules built into CircuitPython which mustn't be used as file names
     # for source code.
