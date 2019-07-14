@@ -122,6 +122,72 @@ MAKEBLOCK_APIS = [
     _("mbuild.ultrasonic_sensor.get_distance(index = 1) \n"),
     _("mbuild.ultrasonic_sensor.set_report_mode(mode, timestamp, index = 1) \n"),
 
+    ## angle sensor
+    _("mbuild.angle_sensor.get_angle(index = 1) \n"),
+    _("mbuild.angle_sensor.get_angle_speed(index = 1) \n"),
+    _("mbuild.angle_sensor.is_rotating_clockwise(index = 1) \n"),
+    _("mbuild.angle_sensor.is_rotating_anticlockwise(index = 1) \n"),
+    _("mbuild.angle_sensor.reset_angle(index = 1) \n"),
+
+    ## button
+    _("mbuild.button.is_pressed(index = 1) \n"),
+    _("mbuild.button.get_count(index = 1) \n"),
+    _("mbuild.button.reset_count(index = 1): \n"),
+
+    ## flame sensor
+    _("mbuild.flame_sensor.is_active(index = 1) \n"),
+    _("mbuild.flame_sensor.get_value(index = 1) \n"),
+
+    ## mq2 gas sensor
+    _("mbuild.mq2_gas_sensor.is_active(threshold_level = 'middle', index = 1) \nlevel:'middle'/'high'/'low'"),
+    _("mbuild.mq2_gas_sensor.get_value(index = 1) \n"),
+
+    ## ir transceiver
+    _("mbuild.ir_transceiver.receive(index = 1) \n"),
+    _("mbuild.ir_transceiver.send(message, index = 1) \n"),
+    _("mbuild.ir_transceiver.send_learned_result(id = 0, index = 1) \nid:0/1"),
+    _("mbuild.ir_transceiver.learn(time_ms = 2000, id = 0, index = 1) \n"),
+    _("mbuild.ir_transceiver.receive_remote_code(index = 1) \nreturn a list:[address, value]"),
+
+    ## joystick
+    _("mbuild.joystick.get_value(opt, index = 1) \nopt:'x'/'y'/'all'"),
+    _("mbuild.joystick.is_active(opt, index = 1) \nopt:'x'/'y'/'all'"),
+
+    ## light sensor
+    _("mbuild.light_sensor.get_value(index = 1) \n"),
+
+    ## motion sensor
+    _("mbuild.motion_sensor.get_acceleration(axis, index = 1) \naxis:'x'/'y'/'z'"),
+    _("mbuild.motion_sensor.get_gyroscope(axis, index = 1) \n'x'/'y'/'z'"),
+    _("mbuild.motion_sensor.get_rotation(axis, index = 1) \n'x'/'y'/'z'"),
+    _("mbuild.motion_sensor.reset_rotation(axis = 'all', index = 1) \n'x'/'y'/'z'/'all'"),
+    _("mbuild.motion_sensor.is_shaked(level = 'usual', index = 1) \nlevel:'light'/'usual'/'strong'"),
+    _("mbuild.motion_sensor.get_shake_strength(index = 1) \n"),
+    _("mbuild.motion_sensor.get_pitch(index = 1) \n"),
+    _("mbuild.motion_sensor.get_roll(index = 1) \n"),
+    _("mbuild.motion_sensor.is_tilted_left(index = 1) \n"),
+    _("mbuild.motion_sensor.is_tilted_right(index = 1) \n"),
+    _("mbuild.motion_sensor.is_tilted_forward(index = 1) \n"),
+    _("mbuild.motion_sensor.is_tilted_backward(index = 1) \n"),
+    _("mbuild.motion_sensor.is_face_up(index = 1) \n"),
+    _("mbuild.motion_sensor.is_face_down(index = 1) \n"),
+    _("mbuild.motion_sensor.is_upright(index = 1) \n"),
+
+    ## mult touch
+    _("mbuild.multi_touch.is_active(position, index = 1) \nposition:1~8"),
+    _("mbuild.multi_touch.get_value(position, index = 1) \nposition:1~8"),
+    _("mbuild.multi_touch.reset_threshold(index = 1) \n"),
+    _("mbuild.multi_touch.set_sensitivity(sen, index = 1) \n"),
+
+    ## soil moisture
+    _("mbuild.soil_moisture.get_humidity(index = 1) \n"),
+
+    ## sound sensoor
+    _("mbuild.sound_sensor.get_loudness(index = 1) \n"),
+
+    ## temp sensor
+    _("mbuild.temp_sensor.get_temperature(opt = 'celsius', index = 1) \nopt:'celsius'/'fahrenheit'"),
+
     # System state objects.
     _("halo.timer_t() \n"),
     _("halo.reset_timer() \n"),
