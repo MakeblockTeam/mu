@@ -56,13 +56,6 @@ except ImportError:  # pragma: no cover
 
 logger = logging.getLogger(__name__)
 
-DEBUG = True
-if DEBUG:
-    debug_print = print
-else:
-    def debug_print(*arg, **keyargs):
-        pass
-
 class makeblock_config():
     def __init__(self):
         self.COMMAND_MAX_TIME_OUT     = 10
@@ -112,8 +105,6 @@ class FileTransferFSM(makeblock_config):
     def push_chars(self, data):
         for c in data:
             ret = self.push_char(c)
-            if ret:
-                debug_print("received frame", ret)
             if ret:
                 if self.frame_received_process:
                     self.frame_received_process(ret)
@@ -225,7 +216,7 @@ class file_content_parse(makeblock_config):
     
     def get_next_block(self):
         if self.write_offset >= self.content_len:
-            debug_print("no data to write")
+            print("no data to write")
             return 
 
         if (self.write_offset + self.FILE_BLOCK_SIZE) < self.content_len:
@@ -399,7 +390,6 @@ class MakeblockMode(MicroPythonMode):
         repl_on = self.repl
         plotter_on = self.plotter
         
-        debug_print("panel run status", repl_on, plotter_on)
         if (not repl_on) and (not plotter_on):
             self.view.close_serial_link()
 
@@ -500,7 +490,6 @@ class MakeblockMode(MicroPythonMode):
             self.editor.show_status_message(_("firmwrae update completed!"))
 
         except Exception as e:
-            debug_print("update firmware error:", e)
             self.editor.show_status_message(_("firmwrae update failed!"))
 
         sys.argv = old_argv

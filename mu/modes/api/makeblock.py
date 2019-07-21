@@ -42,43 +42,51 @@ MAKEBLOCK_APIS = [
     _("sys.print_exception(ex) \nPrint to the REPL information about the exception 'ex'."),
     # time
     _("time.sleep()"),
-    # mbuild
-    _("mbuild.dc_motor_driver.set_power(speed, index = 1) \nSet the power of the DC Motor."),
-    _("mbuild.dc_motor_driver.change_power(speed, index = 1) \nChange the power of the DC Motor"),
-    _("mbuild.dc_motor_driver.get_power(index = 1) \nGet the power of the DC Motor"),
-    _("mbuild.dc_motor_driver.get_load(index = 1) \nGet the load of the DC Motor"),
-    _("mbuild.dc_motor_driver.stop_all() \nStop the DC Motor"),
 
-    _("mbuild.dual_rgb_sensor.study(index = 1) \nCalibrate the RGB Sensor"),
-    _("mbuild.dual_rgb_sensor.get_all_data(index = 1) \nGet all data from the RGB Sensor"),
-    _("mbuild.dual_rgb_sensor.get_intensity(channel, index = 1) \nGet the light intensity of the RGB Sensor"),
-    _("mbuild.dual_rgb_sensor.is_state(state, index = 1) \nTest the state of the RGB Sensor"),
+    # mbuild
+    ## dc motor
+    _("mbuild.dc_motor_driver.set_power(speed, index = 1) \nSet the speed of the DC Motor.\n\nspeed: a 1-100 number, the motor speed"),
+    _("mbuild.dc_motor_driver.change_power(speed, index = 1) \nIncrease the speed of the DC Motor\n\n"
+        "speed: -100~100 number, the increase of the motor speed"),
+    _("mbuild.dc_motor_driver.get_power(index = 1) \nGet the current power level of the DC Motor"),
+    _("mbuild.dc_motor_driver.get_load(index = 1) \nget the electricity current value inside the motor.\n"
+        "the heavier the current (e.g. when the motor is stuck), the higher the value"),
+    _("mbuild.dc_motor_driver.stop_all() \nStop the DC Motor"),
+    
+    ## dual rgb
+    _("mbuild.dual_rgb_sensor.study(index = 1) \n"),
+    _("mbuild.dual_rgb_sensor.get_all_data(index = 1) \n"),
+    _("mbuild.dual_rgb_sensor.get_intensity(channel, index = 1) \nchannel:'RGB1'/'RGB2'"),
+    _("mbuild.dual_rgb_sensor.is_state(state, index = 1) \n"),
     _("mbuild.dual_rgb_sensor.get_offset_track_value(index = 1) \n"),
-    _("mbuild.dual_rgb_sensor.is_color(channel, color, index = 1) \n"),
-    _("mbuild.dual_rgb_sensor.set_led_color(color, index = 1) \nSet the LED Color on the RGB Sensor"),
-    _("mbuild.dual_rgb_sensor.is_on_track(channel, index = 1) \n"),
-    _("mbuild.dual_rgb_sensor.is_on_background(channel, index = 1) \n"),
+    _("mbuild.dual_rgb_sensor.is_color(channel, color, index = 1) \nchannel:'RGB1'/'RGB2'"),
+    _("mbuild.dual_rgb_sensor.set_led_color(color, index = 1) \n"),
+    _("mbuild.dual_rgb_sensor.is_on_track(channel, index = 1) \nchannel:'RGB1'/'RGB2'"),
+    _("mbuild.dual_rgb_sensor.is_on_background(channel, index = 1) \nchannel:'RGB1'/'RGB2'"),
     _("mbuild.dual_rgb_sensor.set_motor_diff_speed_kp(value) \n"),
     _("mbuild.dual_rgb_sensor.get_motor_diff_speed(index = 1) \n"),
-    _("mbuild.dual_rgb_sensor.set_report_mode(mode, timestamp, index = 1) \n"),
-    _("mbuild.dual_rgb_sensor.get_red(channel, index = 1) \n"),
-    _("mbuild.dual_rgb_sensor.get_green(channel, index = 1) \n"),
-    _("mbuild.dual_rgb_sensor.get_blue(channel, index = 1) \n"),
-    _("mbuild.dual_rgb_sensor.get_reflected_light(channel, index = 1) \n"),
+    _("mbuild.dual_rgb_sensor.get_red(channel, index = 1) \nchannel:'RGB1'/'RGB2'"),
+    _("mbuild.dual_rgb_sensor.get_green(channel, index = 1) \nchannel:'RGB1'/'RGB2'"),
+    _("mbuild.dual_rgb_sensor.get_blue(channel, index = 1) \nchannel:'RGB1'/'RGB2'"),
+    _("mbuild.dual_rgb_sensor.get_reflected_light(channel, index = 1) \nchannel:'RGB1'/'RGB2'"),
     _("mbuild.dual_rgb_sensor.set_light_color(color, index = 1) \n"),
     _("mbuild.dual_rgb_sensor.set_all_data_report_mode(mode, timestamp, index = 1) \n"),
 
-    _("mbuild.humiture_sensor.get_relative_humidity(index = 1) \n"),
-    _("mbuild.humiture_sensor.get_temperature(opt = 'celsius', index = 1) \n"),
-    _("mbuild.humiture_sensor.set_report_mode(mode,timestamp,index = 1) \n"),
+    ## humiture
+    _("mbuild.humiture_sensor.get_relative_humidity(index = 1) \nget the relative humidity in percentage.\n\n"
+        "returns a value of 1-100"),
+    _("mbuild.humiture_sensor.get_temperature(opt = 'celsius', index = 1) \nget the temperature of the humiture sensor\n\n"
+        "opt:the temperature system of the return value, 'celsius' or 'fahrenheit'"),
 
+    ## led panel
     _("mbuild.led_panel.show_image(image, pos_x = 0, pos_y = 0, time_s = None, index = 1) \n"),
     _("mbuild.led_panel.show(var, pos_x = None, pos_y = None, wait = True, index = 1) \n"),
     _("mbuild.led_panel.set_pixel(pos_x, pos_y, status, index = 1) \n"),
     _("mbuild.led_panel.get_pixel(pos_x, pos_y, index = 1) \n"),
     _("mbuild.led_panel.toggle_pixel(pos_x, pos_y, index = 1) \n"),
     _("mbuild.led_panel.clear(index = 1) \n"),
-
+    
+    ## led_strip
     _("mbuild.led_strip.set_single(led_index, red_value, green_value, blue_value, index = 1) \n"),
     _("mbuild.led_strip.set_all(red_value, green_value, blue_value, index = 1) \n"),
     _("mbuild.led_strip.off_all(index = 1) \n"),
@@ -92,23 +100,24 @@ MAKEBLOCK_APIS = [
     _("mbuild.led_strip.set_block(led_num, data, index = 1) \n"),
     _("mbuild.led_strip.set_effect(mode, speed, data, index = 1) \n"),
 
+    ## pir
     _("mbuild.pir_sensor.is_activated(index = 1) \n"),
     _("mbuild.pir_sensor.get_count(index = 1) \n"),
     _("mbuild.pir_sensor.reset_count(index = 1) \n"),
-    _("mbuild.pir_sensor.set_report_mode(mode,timestamp,index = 1) \n"),
-
+    
+    ## ranging sensor
     _("mbuild.ranging_sensor.get_distance(index = 1) \n"),
-    _("mbuild.ranging_sensor.set_report_mode(mode, timestamp, index = 1) \n"),
-
+    
+    ## servo
     _("mbuild.servo_driver.set_angle(position, index = 1) \n"),
     _("mbuild.servo_driver.change_angle(position, index = 1) \n"),
     _("mbuild.servo_driver.get_angle(index = 1) \n"),
     _("mbuild.servo_driver.get_load(index = 1) \n"),
-    _("mbuild.servo_driver.set_report_mode(mode, timestamp, index = 1) \n"),
 
+    ## slider
     _("mbuild.slider.get_value(index = 1) \n"),
-    _("mbuild.slider.set_report_mode(mode, timestamp, index = 1) \n"),
 
+    ## speaker
     _("mbuild.speaker.stop_sounds(index = 1) \n"),
     _("mbuild.speaker.set_volume(value, index = 1) \n"),
     _("mbuild.speaker.change_volume(value, index = 1) \n"),
@@ -119,8 +128,8 @@ MAKEBLOCK_APIS = [
     _("mbuild.speaker.play_melody_until_done(sound_name, index = 1) \n"),
     _("mbuild.speaker.is_playing(index = 1) \n"),
 
+    ## ultrasonic
     _("mbuild.ultrasonic_sensor.get_distance(index = 1) \n"),
-    _("mbuild.ultrasonic_sensor.set_report_mode(mode, timestamp, index = 1) \n"),
 
     ## angle sensor
     _("mbuild.angle_sensor.get_angle(index = 1) \n"),
@@ -189,145 +198,193 @@ MAKEBLOCK_APIS = [
     _("mbuild.temp_sensor.get_temperature(opt = 'celsius', index = 1) \nopt:'celsius'/'fahrenheit'"),
 
     # System state objects.
-    _("halo.timer_t() \n"),
+    _("halo.get_timer() \n"),
     _("halo.reset_timer() \n"),
-    #button
-    _("halo.button.is_pressed() \n"),
-    #led
-    _("halo.led.show_single(self, led_id, r, g, b, percentage = 100) \n"),
-    _("halo.led.show_all(self, r_color, g = 0, b = 0, percentage = 100) \n"),
-    _("halo.led.off_single(self, led_id): \n"),
-    _("halo.led.off_all(self) \n"),
-    _("halo.led.clear(self) \n"),
-    _("halo.led.show_ring(self, color_str, offset = 0) \n"),
-    _("halo.led.ring_graph(self, percentage) \n"),
-    _("halo.led.meteor_effect(self) \n"),
-    _("halo.led.rainbow_effect(self) \n"),
-    _("halo.led.spoondrift_effect(self) \n"),
-    _("halo.led.firefly_effect(self) \n"),
-    _("halo.led.show_animation(self, name_string) \n"),
-    _("halo.led.show_full_color(self, data, offset = 0) \n"),
-    #mesh
-    _("halo.mesh.mesh_keep_alive_task() \n"),
-    _("halo.mesh.mesh_keep_alive() \n"),
-    _("halo.mesh.start(type = 'node', mesh_id = (0x77,0x77,0x77,0x77,0x77,0x77), router_ssid = 'hello', router_password = '12345678', max_connection = n, channel = 6) \n"),
-    _("halo.mesh.calculate_mesh_id(group_name) \n"),
+    # button
+    _("halo.button.is_pressed() \nreturn True if the center button of Halocode is pressed"),
+    # cloud_message
+    _("halo.cloud_message.start(topic_head)\n"),
+    _("halo.cloud_message.get_info(msg) \n"),
+    _("halo.cloud_message.broadcast(message, value = "") \n"),
+    # led
+    _("halo.led.show_single(led_id, r, g, b, percentage = 100) \nChange the color of a single LED light in the light ring\n\n"
+        "led_id: a 1-12 number, the index of the LED light\nr, g, b: the 0-255 RGB value of the color\n"
+        "percentage: a 1-100 number, the strength of the light"),
+    _("halo.led.show_all(r, g = 0, b = 0, percentage = 100) \nChange the color of all the LED lights in the light ring\n\n"
+        "r, g, b: the 0-255 RGB value of the color\n"
+        "percentage: a 1-100 number, the strength of the light"),
+    _("halo.led.off_single(led_id) \nTurn off a single light in the LED light ring.\n\n"
+        "led_id: a 1-12 number, the index of the LED light\n"),
+    _("halo.led.off_all() \nTurn off all the lights in the LED light ring"),
+    _("halo.led.clear() \n"),
+    _("halo.led.show_ring(color_str, offset = 0) \n"),
+    _("halo.led.ring_graph(percentage) \n"),
+    _("halo.led.show_animation(name_string) \nspoondrift/meteor/rainbow/firefly/flash_red/flash_orange/right"),
+    _("halo.led.show_full_color(data, offset = 0) \n"),
+    # mesh
     _("halo.mesh.start_group(group_name) \n"),
     _("halo.mesh.join_group(group_name) \n"),
-    _("halo.mesh.get_number_of_nodes() \n"),
-    _("halo.mesh.on_mesh_message_come(msg) \n"),
     _("halo.mesh.get_info(msg) \n"),
-    _("halo.mesh.get_info_status(msg) \n"),
-    _("halo.mesh.get_all_info_status() \n"),
-    _("halo.mesh.get_info_once(msg) \n"),
     _("halo.mesh.broadcast(message, value = "") \n"),
-    #microphone
-    _("halo.microphone.get_loudness('average') \n"),
-    #pin
-    _("halo.pin0.write_digital(self, value) \n"),
-    _("halo.pin0.servo_write(self, value) \n"),
-    _("halo.pin0.read_analog(self) \n"),
-    _("halo.pin0.write_analog(self, value) \n"),
-    _("halo.pin0.analog_set_frequency(self, frequency) \n"),
-    _("halo.pin0.is_touched(self) \n"),
-    _("halo.pin0.set_touchpad_threshold(self, value) \n"),
-    _("halo.pin0.set_touchpad_sensitivity(self, level) \n"),
-    _("halo.pin0.get_touchpad_value(self) \n"),
-    _("halo.pin0.set_pwm_frequency(self, frequency) \n"),
-    _("halo.pin0.set_pwm_duty(self, duty) \n"),
-    _("halo.pin0.play_note(self, note, beat = None) \n"),
-    _("halo.pin0.play_tone(self, frequency, time_s = None) \n"),
-    _("halo.pin1.write_digital(self, value) \n"),
-    _("halo.pin1.servo_write(self, value) \n"),
-    _("halo.pin1.read_analog(self) \n"),
-    _("halo.pin1.write_analog(self, value) \n"),
-    _("halo.pin1.analog_set_frequency(self, frequency) \n"),
-    _("halo.pin1.is_touched(self) \n"),
-    _("halo.pin1.set_touchpad_threshold(self, value) \n"),
-    _("halo.pin1.set_touchpad_sensitivity(self, level) \n"),
-    _("halo.pin1.get_touchpad_value(self) \n"),
-    _("halo.pin1.set_pwm_frequency(self, frequency) \n"),
-    _("halo.pin1.set_pwm_duty(self, duty) \n"),
-    _("halo.pin1.play_note(self, note, beat = None) \n"),
-    _("halo.pin1.play_tone(self, frequency, time_s = None) \n"),
-    _("halo.pin2.write_digital(self, value) \n"),
-    _("halo.pin2.servo_write(self, value) \n"),
-    _("halo.pin2.read_analog(self) \n"),
-    _("halo.pin2.write_analog(self, value) \n"),
-    _("halo.pin2.analog_set_frequency(self, frequency) \n"),
-    _("halo.pin2.is_touched(self) \n"),
-    _("halo.pin2.set_touchpad_threshold(self, value) \n"),
-    _("halo.pin2.set_touchpad_sensitivity(self, level) \n"),
-    _("halo.pin2.get_touchpad_value(self) \n"),
-    _("halo.pin2.set_pwm_frequency(self, frequency) \n"),
-    _("halo.pin2.set_pwm_duty(self, duty) \n"),
-    _("halo.pin2.play_note(self, note, beat = None) \n"),
-    _("halo.pin2.play_tone(self, frequency, time_s = None) \n"),
-    _("halo.pin3.write_digital(self, value) \n"),
-    _("halo.pin3.servo_write(self, value) \n"),
-    _("halo.pin3.read_analog(self) \n"),
-    _("halo.pin3.write_analog(self, value) \n"),
-    _("halo.pin3.analog_set_frequency(self, frequency) \n"),
-    _("halo.pin3.is_touched(self) \n"),
-    _("halo.pin3.set_touchpad_threshold(self, value) \n"),
-    _("halo.pin3.set_touchpad_sensitivity(self, level) \n"),
-    _("halo.pin3.get_touchpad_value(self) \n"),
-    _("halo.pin3.set_pwm_frequency(self, frequency) \n"),
-    _("halo.pin3.set_pwm_duty(self, duty) \n"),
-    _("halo.pin3.play_note(self, note, beat = None) \n"),
-    _("halo.pin3.play_tone(self, frequency, time_s = None) \n"),
-    #speech recognition
-    _("halo.speech_recognition.start(server = SERVER_MICROSOFT, language = LAN_CHINESE, time_s = 5, wait_flag = True) \n"),
-    _("halo.speech_recognition.set_token(server, token) \n"),
-    _("halo.speech_recognition.set_account(server, account, password) \n"),
+    # microphone
+    _("halo.microphone.get_loudness(type = 'average') \naverage/maximum"),
+    # pin
+    _("halo.pin0.write_digital(value) \nOutput digital value to pin\n\nvalue: 0 or 1 number for the output"),
+    _("halo.pin0.servo_write(value) \nSet the angle or the servo PWM high pulse length\n\n"
+        "value: a number, servo angle for 0-180; high pulse length(us) for 544-20000\n"
+        "number between 180 and 544 will be treated as 180"),
+    _("halo.pin0.read_analog() \nRead and return the analog value of the pin.\n\n"
+        "Returns number 0-3300, the voltage(mv) of the signal"),
+    _("halo.pin0.write_analog(value) \Output a PWM signal through the pin.\n\nvalue: a 0-1023 number "),
+    _("halo.pin0.is_touched() \nReturns true if the pin 0 is touched by fingers.\n"),
+    _("halo.pin0.set_touchpad_threshold(value) \nSet the threshold of is_touched\n\n"
+        "value:a 0-1 number. The closer to 0, the easier for is_touched to return True"),
+    _("halo.pin0.set_touchpad_sensitivity(level) \nSet the sensitivity of touch pads.\n\n"
+        "level: a string of ['high','middle','low']"),
+    _("halo.pin0.get_touchpad_value() \nReturn the 'touch value' of the touchpad.\n"
+        "Returns a number of 0-100, the higher the value, the more likely the touchpad is being touched"),
+    _("halo.pin0.set_pwm_frequency(frequency) \n"),
+    _("halo.pin0.set_pwm_duty(duty) \n"),
+    _("halo.pin0.play_note(note, beat = None) \n"),
+    _("halo.pin0.play_tone(frequency, time_s = None) \n"),
+    _("halo.pin1.write_digital(value) \nOutput digital value to pin\n\nvalue: 0 or 1 number for the output"),
+    _("halo.pin1.servo_write(value) \nSet the angle or the servo PWM high pulse length\n\n"
+        "value: a number, servo angle for 0-180; high pulse length(us) for 544-20000\n"
+        "number between 180 and 544 will be treated as 180"),
+    _("halo.pin1.read_analog() \nRead and return the analog value of the pin.\n\n"
+        "Returns number 0-3300, the voltage(mv) of the signal"),
+    _("halo.pin1.write_analog(value) \nOutput a PWM signal through the pin.\n\nvalue: a 0-1023 number"),
+    _("halo.pin1.is_touched() \nReturns true if the pin 0 is touched by fingers.\n"),
+    _("halo.pin1.set_touchpad_threshold(value) \nSet the threshold of is_touched\n\n"
+        "value:a 0-1 number. The closer to 0, the easier for is_touched to return True"),
+    _("halo.pin1.set_touchpad_sensitivity(level) \nSet the sensitivity of touch pads.\n\n"
+        "level: a string of ['high','middle','low']"),
+    _("halo.pin1.get_touchpad_value() \nReturn the 'touch value' of the touchpad.\n"
+        "Returns a number of 0-100, the higher the value, the more likely the touchpad is being touched"),
+    _("halo.pin1.set_pwm_frequency(frequency) \n"),
+    _("halo.pin1.set_pwm_duty(duty) \n"),
+    _("halo.pin1.play_note(note, beat = None) \n"),
+    _("halo.pin1.play_tone(frequency, time_s = None) \n"),
+    _("halo.pin2.write_digital(value) \nOutput digital value to pin\n\nvalue: 0 or 1 number for the output"),
+    _("halo.pin2.servo_write(value) \nSet the angle or the servo PWM high pulse length\n\n"
+        "value: a number, servo angle for 0-180; high pulse length(us) for 544-20000\n"
+        "number between 180 and 544 will be treated as 180"),
+    _("halo.pin2.read_analog() \nRead and return the analog value of the pin.\n\n"
+        "Returns number 0-3300, the voltage(mv) of the signal"),
+    _("halo.pin2.write_analog(value) \Output a PWM signal through the pin.\n\nvalue: a 0-1023 number "),
+    _("halo.pin2.is_touched() \nReturns true if the pin 0 is touched by fingers.\n"),
+    _("halo.pin2.set_touchpad_threshold(value) \nSet the threshold of is_touched\n\n"
+        "value:a 0-1 number. The closer to 0, the easier for is_touched to return True"),
+    _("halo.pin2.set_touchpad_sensitivity(level) \nSet the sensitivity of touch pads.\n\n"
+        "level: a string of ['high','middle','low']"),
+    _("halo.pin2.get_touchpad_value() \nReturn the 'touch value' of the touchpad.\n"
+        "Returns a number of 0-100, the higher the value, the more likely the touchpad is being touched"),
+    _("halo.pin2.set_pwm_frequency(frequency) \n"),
+    _("halo.pin2.set_pwm_duty(duty) \n"),
+    _("halo.pin2.play_note(note, beat = None) \n"),
+    _("halo.pin2.play_tone(frequency, time_s = None) \n"),
+    _("halo.pin3.write_digital(value) \nOutput digital value to pin\n\nvalue: 0 or 1 number for the output"),
+    _("halo.pin3.servo_write(value) \nSet the angle or the servo PWM high pulse length\n\n"
+        "value: a number, servo angle for 0-180; high pulse length(us) for 544-20000\n"
+        "number between 180 and 544 will be treated as 180"),
+    _("halo.pin3.read_analog() \nRead and return the analog value of the pin.\n\n"
+        "Returns number 0-3300, the voltage(mv) of the signal"),
+    _("halo.pin3.write_analog(value) \Output a PWM signal through the pin.\n\nvalue: a 0-1023 number "),
+    _("halo.pin3.is_touched() \nReturns true if the pin 0 is touched by fingers.\n"),
+    _("halo.pin3.set_touchpad_threshold(value) \nSet the threshold of is_touched\n\n"
+        "value:a 0-1 number. The closer to 0, the easier for is_touched to return True"),
+    _("halo.pin3.set_touchpad_sensitivity(level) \nSet the sensitivity of touch pads.\n\n"
+        "level: a string of ['high','middle','low']"),
+    _("halo.pin3.get_touchpad_value() \nReturn the 'touch value' of the touchpad.\n"
+        "Returns a number of 0-100, the higher the value, the more likely the touchpad is being touched"),
+    _("halo.pin3.set_pwm_frequency(frequency) \n"),
+    _("halo.pin3.set_pwm_duty(duty) \n"),
+    _("halo.pin3.play_note(note, beat = None) \n"),
+    _("halo.pin3.play_tone(frequency, time_s = None) \n"),
+    # speech recognition
+    _("halo.speech_recognition.start(server = halo.speech_recognition.SERVER_MICROSOFT, language = halo.speech_recognition.LAN_CHINESE, time_s = 5, wait_flag = True) \n"),
+    _("halo.speech_recognition.begin(time_s = 3,  language = 'mandarin') \nlan:'mandarin'/'cantonese'/'mandarin_taiwan'/'english'/'French'/'German'/'italian'/'spanish'"),
+    _("halo.speech_recognition.set_token(server = halo.speech_recognition.SERVER_MICROSOFT, token) \n"),
+    _("halo.speech_recognition.set_access_token(token) \n"),
     _("halo.speech_recognition.set_token_url(server, url) \n"),
-    _("halo.speech_recognition.set_recognition_url(server, url) \n"),
-    _("halo.speech_recognition.set_wait_time(time_s) \n"),
-    _("halo.speech_recognition.get_all_respond() \n"),
-    _("halo.speech_recognition.get_error_code() \n"),
-    _("halo.speech_recognition.get_error_message() \n"),
+    _("halo.speech_recognition.set_recognition_address(url) \n"),
     _("halo.speech_recognition.get_result_code() \n"),
-    _("halo.speech_recognition.get_sn_code() \n"),
-    #touchpad
-    _("halo.touchpad0.is_touched(self) \n"),
-    _("halo.touchpad0.set_touch_threshold(self, value) \n"),
-    _("halo.touchpad0.set_touch_sensitivity(self, level) \n"),
-    _("halo.touchpad0.get_value(self) \n"),
-    _("halo.touchpad1.is_touched(self) \n"),
-    _("halo.touchpad1.set_touch_threshold(self, value) \n"),
-    _("halo.touchpad1.set_touch_sensitivity(self, level) \n"),
-    _("halo.touchpad1.get_value(self) \n"),
-    _("halo.touchpad2.is_touched(self) \n"),
-    _("halo.touchpad2.set_touch_threshold(self, value) \n"),
-    _("halo.touchpad2.set_touch_sensitivity(self, level) \n"),
-    _("halo.touchpad2.get_value(self) \n"),
-    _("halo.touchpad3.is_touched(self) \n"),
-    _("halo.touchpad3.set_touch_threshold(self, value) \n"),
-    _("halo.touchpad3.set_touch_sensitivity(self, level) \n"),
-    _("halo.touchpad3.get_value(self) \n"),
-    #upload_mode_message
-    _("halo.upload_mode_message.on_upload_mode_message_come(msg) \n"),
+    # touchpad
+    _("halo.touchpad0.is_touched() \nReturn True if the touchpad 0 is touched."),
+    _("halo.touchpad0.set_touch_threshold(value) \nSet the threshold of is_touched\n\n"
+        "value:a 0-1 number. The closer to 0, the easier for is_touched to return True"),
+    _("halo.touchpad0.set_touch_sensitivity(level) \nSet the sensitivity of touch pads.\n\n"
+        "level: a string of ['high','middle','low']"),
+    _("halo.touchpad0.get_value() \n"),
+    _("halo.touchpad1.is_touched() \n"),
+    _("halo.touchpad1.set_touch_threshold(value) \nSet the threshold of is_touched\n\n"
+        "value:a 0-1 number. The closer to 0, the easier for is_touched to return True"),
+    _("halo.touchpad1.set_touch_sensitivity(level) \nSet the sensitivity of touch pads.\n\n"
+        "level: a string of ['high','middle','low']"),
+    _("halo.touchpad1.get_value() \n"),
+    _("halo.touchpad2.is_touched() \n"),
+    _("halo.touchpad2.set_touch_threshold(value) \nSet the threshold of is_touched\n\n"
+        "value:a 0-1 number. The closer to 0, the easier for is_touched to return True"),
+    _("halo.touchpad2.set_touch_sensitivity(level) \nSet the sensitivity of touch pads.\n\n"
+        "level: a string of ['high','middle','low']"),
+    _("halo.touchpad2.get_value() \n"),
+    _("halo.touchpad3.is_touched() \n"),
+    _("halo.touchpad3.set_touch_threshold(value) \nSet the threshold of is_touched\n\n"
+        "value:a 0-1 number. The closer to 0, the easier for is_touched to return True"),
+    _("halo.touchpad3.set_touch_sensitivity(level) \nSet the sensitivity of touch pads.\n\n"
+        "level: a string of ['high','middle','low']"),
+    _("halo.touchpad3.get_value() \n"),
+    # upload_mode_message
     _("halo.upload_mode_message.get_info(msg) \n"),
-    _("halo.upload_mode_message.get_info_status(msg) \n"),
     _("halo.upload_mode_message.broadcast(message, value = "") \n"),
-    #vibration_motor
-    _("halo.vibration_motor.set_strength(self, strength) \n"),
-    _("halo.vibration_motor.on(self, strength = None) \n"),
-    #wifi
-    _("halo.wifi.is_connected(self) \n"),
-    _("halo.wifi.set_mode(mode) \n"),
-    _("halo.wifi.connect(self) \n"),
-    _("halo.wifi.disconnect(self) \n"),
-    _("halo.wifi.start(self, ssid, password, mode = wifi_o.WLAN_MODE_STA) \n"),
-    #speaker
+    # wifi
+    _("halo.wifi.is_connected() \n"),
+    _("halo.wifi.start(ssid, password) \nStart as STA mode"),
+    # speaker
     _("halo.speaker.volume \n"),
     _("halo.speaker.tempo \n"),
-    _("halo.speaker.stop_sounds(self) \n"),
-    _("halo.speaker.play_melody_until_done(self, file_name) \n"),
-    _("halo.speaker.play_melody(self, file_name) \n"),
-    _("halo.speaker.play_tone(self, frequency, time_s = None) \n"),
-    _("halo.speaker.play_note(self, note, beat = None) \n"),
-    _("halo.speaker.rest(self, beat) \n"),
+    _("halo.speaker.stop_sounds() \n"),
+    _("halo.speaker.play_melody_until_done(file_name) \n"),
+    _("halo.speaker.play_melody(file_name) \n"),
+    _("halo.speaker.play_tone(frequency, time_s = None) \n"),
+    _("halo.speaker.play_note(note, beat = None) \n"),
+    _("halo.speaker.rest(beat) \n"),
+    # motion sensor
+    _("halo.motion_sensor.get_roll() \n"),
+    _("halo.motion_sensor.get_pitch() \n"),
+    _("halo.motion_sensor.get_yaw() \n"),
+    _("halo.motion_sensor.get_acceleration(axis) \nx/y/z"),
+    _("halo.motion_sensor.get_gyroscope(axis) \nx/y/z"),
+    _("halo.motion_sensor.get_rotation(axis) \nx/y/z"),
+    _("halo.motion_sensor.reset_rotation(axis = 'all') \nx/y/z/all"),
+    _("halo.motion_sensor.is_tilted_left() \n"),
+    _("halo.motion_sensor.is_tilted_right() \n"),
+    _("halo.motion_sensor.is_arrow_up() \n"),
+    _("halo.motion_sensor.is_arrow_down() \n"),
+    _("halo.motion_sensor.is_shaked() \n"),
+    _("halo.motion_sensor.get_shake_strength() \n"),
+    _("halo.motion_sensor.is_led_ring_up() \n"),
+    _("halo.motion_sensor.is_led_ring_down() \n"),
+    _("halo.motion_sensor.is_free_fall() \n"),
+    _("halo.motion_sensor.is_rotate_clockwise() \n"),
+    _("halo.motion_sensor.is_rotate_anticlockwise() \n"),
+    # event
+    _("@event.button_pressed \n"),
+    _("@event.shaked \n"),
+    _("@event.tilted_left \n"),
+    _("@event.tilted_right \n"),
+    _("@event.arrow_up \n"),
+    _("@event.arrow_down \n"),
+    _("@event.free_fall \n"),
+    _("@event.rotate_clockwise \n"),
+    _("@event.rotate_anticlockwise \n"),
+    _("@event.received(message_str) \n"),
+    _("@event.cloud_message(message) \n"),
+    _("@event.mesh_message(message) \n"),
+    _("@event.upload_mode__message(message) \n"),
+    _("@event.received(message_str) \n"),
+    _("@event.greater_than(threshold, type_str) \n"),
+    _("@event.touchpad0_active \n"),
     # Math functions
     _("math.sqrt(x) \nReturn the square root of 'x'."),
     _("math.pow(x, y) \nReturn 'x' raised to the power 'y'."),
